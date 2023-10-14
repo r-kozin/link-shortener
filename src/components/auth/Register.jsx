@@ -19,6 +19,9 @@ import {
     passwordValidate,
     usernameValidate,
   } from "../../utils/form-validate.jsx";
+  import { useAuth } from "../../hooks/auth.jsx";
+  import { useEffect } from "react";
+  import { useNavigate } from "react-router-dom";
   
   export const Register = () => {
     const { register: signup, isLoading } = useRegister();
@@ -27,6 +30,15 @@ import {
       handleSubmit,
       formState: { errors },
     } = useForm();
+
+    const { user, isLoading: authLoading } = useAuth();
+    const navigate = useNavigate();
+  
+    useEffect(() => {
+      if (!authLoading && user) {
+        navigate(DASHBOARD);
+      }
+    }, [user, authLoading]);
   
     async function handleRegister(data) {
       signup({

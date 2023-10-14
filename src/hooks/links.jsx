@@ -2,7 +2,13 @@ import { useState } from "react";
 import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { uuidv4 } from "@firebase/util";
-import { setDoc, doc, collection, orderBy } from "firebase/firestore";
+import {
+  setDoc,
+  doc,
+  collection,
+  orderBy,
+  deleteDoc,
+} from "firebase/firestore";
 import { db } from "../lib/firebase";
 import { DASHBOARD } from "../lib/routes";
 import { useCollectionData } from "react-firebase-hooks/firestore";
@@ -66,4 +72,28 @@ export function useGetLinks(uid = null) {
     throw error;
   }
   return { links, isLoading };
+}
+
+export function useDeleteLink(id) {
+  const [isLoading, setLoading] = useState(false);
+  const toast = useToast();
+
+  async function deleteLink() {
+    const res = window.confirm(
+      "Are you sure you want to delete this link? Warning: This action cannot be undone."
+    );
+    if (res) {
+      setLoading(true);
+      await deleteDoc(doc(db, "links", id));
+      toast({
+        title: "Link deleted successfully!",
+        status: "info",
+        duration: 5000,
+        position: "top",
+        isClosable: true,
+      });
+      setLoading(false);
+    }
+  }
+  return { deleteLink, isLoading };
 }

@@ -2,6 +2,8 @@ import { Box, Button, Text, Link } from "@chakra-ui/react";
 import {BsFillBarChartFill} from "react-icons/bs";
 import React from "react";
 import format from "date-fns/format";
+import { useToast } from "@chakra-ui/react";
+import { useDeleteLink } from "../../hooks/links";
 
 export const LinkCard = ({
   id,
@@ -11,6 +13,21 @@ export const LinkCard = ({
   shortCode,
   totalClicks,
 }) => {
+  const {deleteLink, isLoading: deleteLoading} = useDeleteLink(id)
+  const toast = useToast();
+
+
+  function copyToClipboard() {
+    navigator.clipboard.writeText("http://" + window.location.host + "/" + shortCode);
+    toast({
+      title: "Copied",
+      description: "Link copied to clipboard.",
+      status: "success",
+      duration: 5000,
+      isClosable: true,
+      position: "top",
+    });
+  }
   return (
     <Box display={'flex'} justifyContent={'space-between'} alignItems={'center'} px={'3rem'} pt={'1.5rem'} w={'container.xl'} maxW={'full'}>
       <Box textAlign={'left'}>
@@ -21,10 +38,10 @@ export const LinkCard = ({
         </Box>
         <Box display={'flex'} alignItems={'center'} >
           <Link href={`http://${window.location.host}/${shortCode}`}>{`${window.location.host}/${shortCode}`}</Link>
-          <Button size={"sm"} variant={"outline"} colorScheme={'red'} ml={'2'}>
+          <Button size={"sm"} variant={"outline"} colorScheme={'red'} ml={'2'} onClick={copyToClipboard}>
             Copy
           </Button>
-          <Button size={"sm"} colorScheme={'red'} ml={'2'}>
+          <Button size={"sm"} colorScheme={'red'} ml={'2'} onClick={deleteLink} isLoading={deleteLoading}>
             Delete
           </Button>
         </Box>
