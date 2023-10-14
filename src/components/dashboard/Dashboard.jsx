@@ -18,14 +18,25 @@ const Dashboard = () => {
 
   return (
     <>
-      <HStack pl={"6"}>
-        <Text fontSize={"3xl"} pr={"2"}>
-          Dashboard
-        </Text>
-        <Button colorScheme={"red"} size={"sm"} onClick={onOpen}>
-          Create Link
-        </Button>
-      </HStack>
+      <Box
+        display={"flex"}
+        justifyContent={"space-between"}
+        alignItems={"center"}
+        px={"3rem"}
+        pt={"1.5rem"}
+        w={"container.xl"}
+        maxW={"full"}
+        m={"auto"}
+      >
+        <HStack mr={"auto"}>
+          <Text fontSize={"3xl"} pr={"2"} fontWeight={'bold'}>
+            Dashboard
+          </Text>
+          <Button colorScheme={"red"} size={"sm"} onClick={onOpen}>
+            Create Link
+          </Button>
+        </HStack>
+      </Box>
       <Box
         display={"flex"}
         flexDirection={"column"}

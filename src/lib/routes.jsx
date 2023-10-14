@@ -4,6 +4,7 @@ import { Layout } from "../layout/Layout"
 import { Login } from "../components/auth/Login"
 import { Register } from "../components/auth/Register"
 import { Redirect } from "../components/redirect/Redirect"
+import { Home } from "../components/home/Home"
 
 export const ROOT = '/'
 export const LOGIN = '/login'
@@ -16,7 +17,7 @@ export const DASHBOARD = '/app/dashboard'
 
 
 export const routes = createBrowserRouter([
-    { path: ROOT, element: "Public Root" },
+    { path: ROOT, element: <Home /> },
     { path: LOGIN, element: <Login /> },
     { path: REGISTER, element: <Register />},
     { path: REDIRECT, element: <Redirect /> },
