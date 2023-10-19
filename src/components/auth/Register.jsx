@@ -10,18 +10,16 @@ import {
     Link,
     Text,
   } from "@chakra-ui/react";
-  import { Link as RouterLink } from "react-router-dom";
+  import { Link as RouterLink, useNavigate } from "react-router-dom";
   import { DASHBOARD, LOGIN } from "../../lib/routes.jsx";
-  import { useRegister } from "../../hooks/auth.jsx";
+  import { useRegister, useAuth } from "../../hooks/auth.jsx";
   import { useForm } from "react-hook-form";
   import {
     emailValidate,
     passwordValidate,
     usernameValidate,
   } from "../../utils/form-validate.jsx";
-  import { useAuth } from "../../hooks/auth.jsx";
   import { useEffect } from "react";
-  import { useNavigate } from "react-router-dom";
   
   export const Register = () => {
     const { register: signup, isLoading } = useRegister();

@@ -1,8 +1,7 @@
-import { Box, Button, Text, Link } from "@chakra-ui/react";
+import { Box, Button, Text, Link, useToast } from "@chakra-ui/react";
 import {BsFillBarChartFill} from "react-icons/bs";
 import React from "react";
 import format from "date-fns/format";
-import { useToast } from "@chakra-ui/react";
 import { useDeleteLink } from "../../hooks/links";
 
 export const LinkCard = ({

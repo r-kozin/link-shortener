@@ -1,11 +1,9 @@
-import React, { Fragment, useEffect, useState } from "react";
-import { Button, HStack, Text, Box, Divider } from "@chakra-ui/react";
+import React, { Fragment } from "react";
+import { Button, HStack, Text, Box, Divider, useDisclosure, Spinner } from "@chakra-ui/react";
 import { LinkCard } from "./LinkCard";
 import { useAuth } from "../../hooks/auth";
 import { CreateLink } from "../link/createLink";
-import { useDisclosure } from "@chakra-ui/react";
 import { useGetLinks } from "../../hooks/links";
-import { Spinner } from "@chakra-ui/react";
 
 const Dashboard = () => {
   const { user: authUser, isLoading: authLoading } = useAuth();
