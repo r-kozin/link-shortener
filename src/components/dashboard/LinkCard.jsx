@@ -36,7 +36,7 @@ export const LinkCard = ({
         <Text>{link}</Text>
         </Box>
         <Box display={'flex'} className="link-button-container">
-          <Link href={`http://${window.location.host}/${shortCode}`}>{`${window.location.host}/${shortCode}`}</Link>
+          <Link href={`http://${window.location.host}/${shortCode}`} target="_blank">{`${window.location.host}/${shortCode}`}</Link>
           <div className="button-container">
           <Button size={"sm"} variant={"outline"} colorScheme={'red'} ml={'2'} onClick={copyToClipboard} id="copy-button">
             Copy

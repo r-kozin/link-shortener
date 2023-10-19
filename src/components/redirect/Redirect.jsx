@@ -1,10 +1,9 @@
 import { Spinner, Text } from "@chakra-ui/react";
-import React, { useEffect } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import isShortcodeAvailable from "../../utils/isShortcodeAvailable";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../../lib/firebase";
-import { updateDoc } from "firebase/firestore";
 
 export const Redirect = () => {
   const { shortCode } = useParams();

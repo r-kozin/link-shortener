@@ -14,28 +14,16 @@ import {
 } from "@chakra-ui/react";
 import { useAddLink } from "../../hooks/links.jsx";
 import { useAuth } from "../../hooks/auth.jsx";
-import { useState } from "react";
 import { linkTitleValidate, linkValidate } from "../../utils/form-validate.jsx";
 import { useForm } from "react-hook-form";
 
 export const CreateLink = ({ isOpen, onClose }) => {
   const { addLink, isLoading } = useAddLink();
   const { user, isLoading: authLoading } = useAuth();
-  const [data, setData] = useState({});
-
-  function handleChange(e) {
-    setData({ ...data, [e.target.name]: e.target.value });
-    console.log(data);
-  }
-  // function handleLinkSubmit(e){
-  //     e.preventDefault()
-  //     handleCreateLink(data)
-  // }
 
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm();
 
@@ -69,7 +57,7 @@ export const CreateLink = ({ isOpen, onClose }) => {
                   {...register("title", linkTitleValidate)}
                 />
                 <FormErrorMessage>
-                  {errors.title && errors.title.message}
+                  {errors.title?.message}
                 </FormErrorMessage>
               </FormControl>
               <FormControl isInvalid={errors.link} py={"2"}>
@@ -80,7 +68,7 @@ export const CreateLink = ({ isOpen, onClose }) => {
                   {...register("link", linkValidate)}
                 />
                 <FormErrorMessage>
-                  {errors.link && errors.link.message}
+                  {errors.link?.message}
                 </FormErrorMessage>
               </FormControl>
             </form>

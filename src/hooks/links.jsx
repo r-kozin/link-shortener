@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useToast } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
 import { uuidv4 } from "@firebase/util";
 import {
   setDoc,
@@ -8,18 +7,17 @@ import {
   collection,
   orderBy,
   deleteDoc,
+  query,
+  where
 } from "firebase/firestore";
 import { db } from "../lib/firebase";
-import { DASHBOARD } from "../lib/routes";
 import { useCollectionData } from "react-firebase-hooks/firestore";
-import { query, where } from "firebase/firestore";
 import { nanoid } from "nanoid";
 import doesShortcodeExist from "../utils/doesShortcodeExist";
 
 export function useAddLink() {
   const [isLoading, setLoading] = useState(false);
   const toast = useToast();
-  const navigate = useNavigate();
 
   async function addLink(link) {
     setLoading(true);

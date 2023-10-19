@@ -10,14 +10,12 @@ import {
   Link,
   Text,
 } from "@chakra-ui/react";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { DASHBOARD, REGISTER } from "../../lib/routes.jsx";
-import { useLogin } from "../../hooks/auth.jsx";
+import { useLogin, useAuth } from "../../hooks/auth.jsx";
 import { useForm } from "react-hook-form";
 import { emailValidate, passwordValidate } from "../../utils/form-validate.jsx";
-import { useAuth } from "../../hooks/auth.jsx";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
   const { login, isLoading } = useLogin();
@@ -66,7 +64,7 @@ export const Login = () => {
               {...register("email", emailValidate)}
             />
             <FormErrorMessage>
-              {errors.email && errors.email.message}
+              {errors.email?.message}
             </FormErrorMessage>
           </FormControl>
           <FormControl isInvalid={errors.password} py={"2"}>
@@ -77,7 +75,7 @@ export const Login = () => {
               {...register("password", passwordValidate)}
             />
             <FormErrorMessage>
-              {errors.password && errors.password.message}
+              {errors.password?.message}
             </FormErrorMessage>
           </FormControl>
           <Button
