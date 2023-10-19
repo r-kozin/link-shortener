@@ -9,24 +9,35 @@ import {
   ModalFooter,
   Button,
   Input,
+  FormControl,
+  FormErrorMessage,
 } from "@chakra-ui/react";
 import { useAddLink } from "../../hooks/links.jsx";
 import { useAuth } from "../../hooks/auth.jsx";
 import { useState } from "react";
+import { linkTitleValidate, linkValidate } from "../../utils/form-validate.jsx";
+import { useForm } from "react-hook-form";
 
 export const CreateLink = ({ isOpen, onClose }) => {
   const { addLink, isLoading } = useAddLink();
   const { user, isLoading: authLoading } = useAuth();
-    const [data, setData] = useState({});
+  const [data, setData] = useState({});
 
-function handleChange(e){
-    setData({...data, [e.target.name]: e.target.value})
-    console.log(data)
-}
-function handleSubmit(e){
-    e.preventDefault()
-    handleCreateLink(data)
-}
+  function handleChange(e) {
+    setData({ ...data, [e.target.name]: e.target.value });
+    console.log(data);
+  }
+  // function handleLinkSubmit(e){
+  //     e.preventDefault()
+  //     handleCreateLink(data)
+  // }
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
 
   async function handleCreateLink(data) {
     console.log(data);
@@ -38,7 +49,7 @@ function handleSubmit(e){
     onClose();
   }
 
-  if (authLoading) return "Loading..."
+  if (authLoading) return "Loading...";
 
   return (
     <>
@@ -48,20 +59,30 @@ function handleSubmit(e){
           <ModalHeader>Create Link</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-          <form onSubmit={handleCreateLink}>
-            <label htmlFor="title">Title</label>
-            <Input
-              placeholder={"My Website"}
-              name="title"
-              mb={"1rem"}
-              onChange={handleChange}
-            />
-            <label htmlFor="link">Link</label>
-            <Input
-              placeholder={"https://super-long-link.com/sfhagk13kj1"}
-              name="link"
-              onChange={handleChange}
-            />
+            <form onSubmit={handleSubmit(handleCreateLink)}>
+              <FormControl isInvalid={errors.title} py={"2"}>
+                <label htmlFor="title">Title</label>
+                <Input
+                  placeholder={"My Website"}
+                  name="title"
+                  mb={"1rem"}
+                  {...register("title", linkTitleValidate)}
+                />
+                <FormErrorMessage>
+                  {errors.title && errors.title.message}
+                </FormErrorMessage>
+              </FormControl>
+              <FormControl isInvalid={errors.link} py={"2"}>
+                <label htmlFor="link">Link</label>
+                <Input
+                  placeholder={"https://super-long-link.com/sfhagk13kj1"}
+                  name="link"
+                  {...register("link", linkValidate)}
+                />
+                <FormErrorMessage>
+                  {errors.link && errors.link.message}
+                </FormErrorMessage>
+              </FormControl>
             </form>
           </ModalBody>
 
@@ -70,7 +91,7 @@ function handleSubmit(e){
               colorScheme="red"
               isLoading={isLoading}
               type="submit"
-              onClick={handleSubmit}
+              onClick={handleSubmit(handleCreateLink)}
             >
               Shorten Link
             </Button>

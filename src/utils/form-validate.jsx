@@ -20,4 +20,17 @@ export const emailValidate = {
           message: "Username must contain only letters and numbers",
       },
   };
+
+  export const linkValidate = {
+    required: { value: true, message: "Please enter a link" },
+    pattern: {
+      value: /^(ftp|http|https):\/\/[^ "]+$/, 
+      message: "Invalid link. Make sure to include http:// or https://",
+    },
+  };
   
+  export const linkTitleValidate = {
+    required: { value: true, message: "Please enter a title" },
+    minLength: { value: 3, message: "Title must be at least 3 characters" },
+    maxLength: { value: 15, message: "Title must be less than 15 characters" },
+  };

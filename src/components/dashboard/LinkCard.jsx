@@ -17,7 +17,7 @@ export const LinkCard = ({
 
 
   function copyToClipboard() {
-    navigator.clipboard.writeText("http://" + window.location.host + "/" + shortCode);
+    navigator.clipboard.writeText("https://" + window.location.host + "/" + shortCode);
     toast({
       title: "Copied",
       description: "Link copied to clipboard.",
