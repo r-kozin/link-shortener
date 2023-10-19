@@ -4,6 +4,7 @@ import { LinkCard } from "./LinkCard";
 import { useAuth } from "../../hooks/auth";
 import { CreateLink } from "../link/createLink";
 import { useGetLinks } from "../../hooks/links";
+import clipboard from '../../assets/empty-clipboard.png'
 
 const Dashboard = () => {
   const { user: authUser, isLoading: authLoading } = useAuth();
@@ -53,7 +54,10 @@ const Dashboard = () => {
             </Fragment>
           ))
         ) : (
-          <Text fontSize={"xl"}>You have no links yet.</Text>
+          <>
+          <img src={clipboard} alt="empty clipboard" id="no-links-image"/>
+          <Text fontSize={"xl"}>You do not have any links yet.</Text>
+        </>
         )}
       </Box>
       <CreateLink isOpen={isOpen} onClose={onClose} />
