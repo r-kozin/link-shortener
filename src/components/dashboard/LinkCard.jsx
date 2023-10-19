@@ -29,21 +29,23 @@ export const LinkCard = ({
     });
   }
   return (
-    <Box display={'flex'} justifyContent={'space-between'} alignItems={'center'} px={'3rem'} pt={'1.5rem'} w={'container.xl'} maxW={'full'}>
+    <Box display={'flex'} justifyContent={'space-between'} alignItems={'center'} pt={'1.5rem'} w={'container.xl'} maxW={'full'} className="link-container">
       <Box textAlign={'left'}>
         <Text color={'gray.400'} fontSize={'sm'} fontWeight={'bold'}>CREATED {format(date, 'd MMM, p')}</Text>
         <Box my={'2'}>
         <Text fontSize={'2xl'} fontWeight={'semibold'}>{title}</Text>
         <Text>{link}</Text>
         </Box>
-        <Box display={'flex'} alignItems={'center'} >
+        <Box display={'flex'} className="link-button-container">
           <Link href={`http://${window.location.host}/${shortCode}`}>{`${window.location.host}/${shortCode}`}</Link>
-          <Button size={"sm"} variant={"outline"} colorScheme={'red'} ml={'2'} onClick={copyToClipboard}>
+          <div className="button-container">
+          <Button size={"sm"} variant={"outline"} colorScheme={'red'} ml={'2'} onClick={copyToClipboard} id="copy-button">
             Copy
           </Button>
           <Button size={"sm"} colorScheme={'red'} ml={'2'} onClick={deleteLink} isLoading={deleteLoading}>
             Delete
           </Button>
+          </div>
         </Box>
       </Box>
       <Box>

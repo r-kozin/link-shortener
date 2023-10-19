@@ -21,6 +21,15 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
+.link-button-container{
+  align-items: center;
+}
+
+.link-container{
+  padding-inline-start: 3rem;
+  padding-inline-end: 3rem;
+}
+
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
@@ -55,6 +64,19 @@
   }
   
 }
+@media screen and (max-width: 550px) {
+  .link-button-container{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  #copy-button{
+    margin-left: 0;
+  }
+  .link-container{
+    padding-inline-start: 2rem;
+    padding-inline-end: 2rem;
+  }
+  }
 
 .card {
   padding: 2em;
