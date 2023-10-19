@@ -20,7 +20,7 @@ export const Navbar = () => {
     justify={'center'}
     >
         <Flex width={'full'} maxW={'full'} align={'center'} justify={'space-between'} px={'4'}> {/* change maxW to 100% for full length navbar */}
-            <Text fontWeight={'bold'}>URL Shortener</Text>
+            <Text fontWeight={'bold'}>Link Trim</Text>
             <Link color={'red'} ml={'auto'} padding={'2'} px={'4'} as={RouterLink} to={DASHBOARD} fontWeight={'bold'} fontSize={'md'}>Links</Link>
             <Button colorScheme={'red'} size={'sm'} onClick={logout} isLoading={isLoading}>Log Out</Button>
         </Flex>

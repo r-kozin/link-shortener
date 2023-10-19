@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Button, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import mockup from '../../assets/mockup.png'
+import mockup from '../../assets/linktrim.png'
 
 export const Home = () => {
   return (
@@ -14,7 +14,7 @@ export const Home = () => {
           color={'white'}
           id="home-logo"
         >
-          URL Shortener
+          Link Trim
         </Text>
         </Box>
         <Box>
