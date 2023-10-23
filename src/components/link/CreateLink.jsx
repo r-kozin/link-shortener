@@ -28,7 +28,6 @@ export const CreateLink = ({ isOpen, onClose }) => {
   } = useForm();
 
   async function handleCreateLink(data) {
-    console.log(data);
     await addLink({
       uid: user.id,
       title: data.title,

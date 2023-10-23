@@ -7,7 +7,6 @@ import { db } from "../../lib/firebase";
 
 export const Redirect = () => {
   const { shortCode } = useParams();
-  console.log(shortCode);
   const [shortLinkExists, setShortLinkExists] = React.useState(null);
   const [isLoading, setLoading] = React.useState(true);
   checkShortCode();

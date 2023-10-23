@@ -46,8 +46,6 @@ export const Login = () => {
     if (succeeded) reset();
   }
 
-  console.log(errors);
-
   return (
     <Center w={"100%"} h={"100vh"}>
       <Box mx={"1"} maxW={"md"} p={"9"} borderWidth={"1px"} borderRadius={"lg"}>

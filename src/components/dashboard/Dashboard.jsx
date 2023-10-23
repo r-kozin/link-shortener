@@ -13,7 +13,6 @@ const Dashboard = () => {
   );
   const { isOpen, onClose, onOpen } = useDisclosure();
   if (authLoading) return <div>Loading...</div>;
-  console.log(userLinks);
 
   return (
     <>

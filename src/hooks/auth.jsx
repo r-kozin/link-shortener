@@ -22,7 +22,6 @@ export function useAuth() {
       const ref = doc(db, "users", authUser.uid);
       const docSnap = await getDoc(ref);
       setUser(docSnap.data());
-      console.log(docSnap.data());
       setLoading(false);
     }
     if (!authLoading) {
