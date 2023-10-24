@@ -59,6 +59,7 @@ import {
               <FormLabel>Username</FormLabel>
               <Input
                 placeholder="username"
+                autoComplete="username"
                 {...register("username", usernameValidate)}
               />
               <FormErrorMessage>
@@ -69,6 +70,7 @@ import {
               <FormLabel>Email</FormLabel>
               <Input
                 type={"email"}
+                autoComplete="email"
                 placeholder="user@email.com"
                 {...register("email", emailValidate)}
               />
@@ -80,6 +82,7 @@ import {
               <FormLabel>Password</FormLabel>
               <Input
                 type={"password"}
+                autoComplete="new-password"
                 placeholder="password123"
                 {...register("password", passwordValidate)}
               />

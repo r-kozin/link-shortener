@@ -58,6 +58,7 @@ export const Login = () => {
             <FormLabel>Email</FormLabel>
             <Input
               type={"email"}
+              autoComplete="email"
               placeholder="user@email.com"
               {...register("email", emailValidate)}
             />
@@ -69,6 +70,7 @@ export const Login = () => {
             <FormLabel>Password</FormLabel>
             <Input
               type={"password"}
+              autoComplete="current-password"
               placeholder="password123"
               {...register("password", passwordValidate)}
             />

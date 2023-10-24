@@ -11,6 +11,7 @@ import {
   Input,
   FormControl,
   FormErrorMessage,
+  FormLabel,
 } from "@chakra-ui/react";
 import { useAddLink } from "../../hooks/links.jsx";
 import { useAuth } from "../../hooks/auth.jsx";
@@ -49,7 +50,7 @@ export const CreateLink = ({ isOpen, onClose }) => {
           <ModalBody>
             <form onSubmit={handleSubmit(handleCreateLink)}>
               <FormControl isInvalid={errors.title} py={"2"}>
-                <label htmlFor="title">Title</label>
+                <FormLabel>Title</FormLabel>
                 <Input
                   placeholder={"My Website"}
                   name="title"
@@ -61,7 +62,7 @@ export const CreateLink = ({ isOpen, onClose }) => {
                 </FormErrorMessage>
               </FormControl>
               <FormControl isInvalid={errors.link} py={"2"}>
-                <label htmlFor="link">Link</label>
+                <FormLabel>Link</FormLabel>
                 <Input
                   placeholder={"https://super-long-link.com/sfhagk13kj1"}
                   name="link"
