@@ -22,7 +22,7 @@ export function useAddLink() {
   async function addLink(link) {
     setLoading(true);
     let newShortCode = nanoid(6);
-    const shortLinkExists = await doesShortcodeExist(newShortCode);
+    const shortLinkExists = await doesShortcodeExist(newShortCode); //check if short code exists
 
     if (!shortLinkExists) {
       toast({
@@ -80,7 +80,7 @@ export function useDeleteLink(id) {
     const res = window.confirm(
       "Are you sure you want to delete this link? Warning: This action cannot be undone."
     );
-    if (res) {
+    if (res) { //if user confirms, delete link
       setLoading(true);
       await deleteDoc(doc(db, "links", id));
       toast({

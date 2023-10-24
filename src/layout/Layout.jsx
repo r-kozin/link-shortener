@@ -10,6 +10,7 @@ export const Layout = () => {
     const navigate = useNavigate()
     const {user, isLoading} = useAuth()
 
+    //redirect to login if not logged in
     useEffect(() => {
         if(!isLoading && pathname.startsWith('/app') && !user) {
             navigate(LOGIN)

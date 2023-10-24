@@ -27,7 +27,8 @@ export const CreateLink = ({ isOpen, onClose }) => {
     formState: { errors },
   } = useForm();
 
-  async function handleCreateLink(data) {
+  //create link function
+  async function handleCreateLink(data) { 
     await addLink({
       uid: user.id,
       title: data.title,

@@ -32,7 +32,7 @@ import {
     const { user, isLoading: authLoading } = useAuth();
     const navigate = useNavigate();
   
-    useEffect(() => {
+    useEffect(() => { //redirect to dashboard if logged in
       if (!authLoading && user) {
         navigate(DASHBOARD);
       }
